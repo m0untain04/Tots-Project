@@ -5,11 +5,11 @@ require_once("api_dbconnect.php");
 $user = $_GET['user'];
 $result = mysqli_query($link, "SELECT * FROM users WHERE user = '$user'");
 if($result->num_rows > 0) {
-    echo'<p>taken</p>';
+    echo 'taken';
     exit;
 }
 else {
-    echo'<p>valid</p>';
+    echo 'valid';
     exit;
 }
 ?>

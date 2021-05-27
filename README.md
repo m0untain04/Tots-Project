@@ -21,6 +21,8 @@ To do (Tots Messenger):
 
 -> Some improvements... ❌
 
+-> Interface ❓
+
 # Tots Discord BOT
 
 Tots Discord BOT is a simple discord bot that can send ddos attacks via an API.

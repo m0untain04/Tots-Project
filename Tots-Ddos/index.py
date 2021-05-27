@@ -1,10 +1,16 @@
 import discord
 from discord.ext import commands
+
+
 def params(list, index):
     return index < len(list)
-client = commands.Bot(command_prefix = 'td!')
+
+
+client = commands.Bot(command_prefix='td!')
+
+
 class MyClient(discord.Client):
-    
+
     async def on_ready(self):
         print('Logged on as {0}!'.format(self.user))
         game = discord.Game("m0untain.agency")

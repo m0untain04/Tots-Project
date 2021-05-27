@@ -1,9 +1,12 @@
 <?php
-$password = 0;
-$user = 0;
-// Initialize the session
-require_once("api_dbconnect.php");
 $user = $_GET['user'];
 $password = $_GET['pass'];
-$result = mysqli_query($link, "INSERT INTO `users`(`user`, `pass`, `messages_sent`) VALUES ('$user','$password', '0')");
+// Initialize the session
+require_once("api_dbconnect.php");
+// serialize the user inputs
+$stmt = $link->prepare('INSERT INTO `users`(`user`, `pass`, `messages_sent`) VALUES (:usr, :pswd , 0)');
+$stmt->execute(array(
+    ':usr' => serialize($user),
+    ':pswd' => serialize($password),
+));
 ?>

@@ -1,17 +1,21 @@
 <?php
-$password = 0;
-$user = 0;
-// Initialize the session
-require_once("api_dbconnect.php");
 $user = $_GET['user'];
 $password = $_GET['pass'];
-$result = mysqli_query($link, "SELECT * FROM users WHERE user = '$user' AND pass = '$password'");
-if($result->num_rows > 0) {
-    echo'<p>accepted</p>';
+// Initialize the session
+require_once("api_dbconnect.php");
+// serialize the user inputs
+$stmt = $link->prepare('SELECT * FROM users WHERE user = :usr AND pass = :pswd');
+$stmt->execute(array(
+    ':usr' => serialize($user),
+    ':pswd' => serialize($password),
+));
+
+if($stmt->num_rows > 0) {
+    echo 'accepted';
     exit;
 }
 else {
-    echo'<p>rejected</p>';
+    echo 'rejected';
     exit;
 }
 ?>
